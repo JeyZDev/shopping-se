@@ -1,20 +1,19 @@
 import React from 'react'
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+    const { id, productName, category, imageUrl, price, available } = props;
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
-        />
+        <img src={imageUrl} alt={productName} />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Card Title</h2>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p>
+        <h2 className="card-title">{productName}</h2>
+        <p>{category}</p>
+        <div className="">
+          <p>{available}</p>
+          <p>{price}</p>
+        </div>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>
         </div>
