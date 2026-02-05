@@ -2,7 +2,7 @@ import { ADD_PRODUCT, ADD_QUANTITY, REMOVE_QUANTITY } from "./ActionTypes";
 import { initialState } from "./InitialState";
 
 const nextId = (items) => {
-    return items.reducer((id, item) => Math.max(id, item), -1) +1;
+    return items.reduce((id, item) => Math.max(id, item), -1) +1;
 }
 
 const ProductReducer = (state = initialState, action) => {

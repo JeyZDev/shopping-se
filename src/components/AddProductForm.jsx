@@ -22,90 +22,73 @@ const AddProductForm = () => {
       <h1 className="text-center text-2xl font-semibold mb-5">
         Add new Product
       </h1>
-      <div className="grid gap-6 mb-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6 mb-6">
         <div>
-          <label
-            for="productName"
-            class="block mb-2.5 text-sm font-medium text-heading"
-          >
+          <label htmlFor="title" className="block mb-2.5 text-sm font-medium">
             Product Name
           </label>
           <input
+            id="title"
             type="text"
-            id="productName"
-            class="rounded-lg bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-            placeholder=""
-            required
+            {...register('title', { required: true })}
+            className="rounded-lg border w-full px-3 py-2.5"
           />
         </div>
 
         <div>
-          <label
-            for="first_name"
-            class="block mb-2.5 text-sm font-medium text-heading"
-          >
+          <label htmlFor="category" className="block mb-2.5 text-sm font-medium">
             Category
           </label>
           <input
+            id="category"
             type="text"
-            id="first_name"
-            class="rounded-lg bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-            placeholder=""
-            required
+            {...register('category', { required: true })}
+            className="rounded-lg border w-full px-3 py-2.5"
           />
         </div>
 
         <div>
-          <label
-            for="first_name"
-            class="block mb-2.5 text-sm font-medium text-heading"
-          >
+          <label htmlFor="imageUrl" className="block mb-2.5 text-sm font-medium">
             Image Url
           </label>
           <input
+            id="imageUrl"
             type="text"
-            id="first_name"
-            class="rounded-lg bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-            placeholder=""
-            required
+            {...register('imageUrl', { required: true })}
+            className="rounded-lg border w-full px-3 py-2.5"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-6">
           <div>
-            <label
-              for="first_name"
-              class="block mb-2.5 text-sm font-medium text-heading"
-            >
+            <label htmlFor="price" className="block mb-2.5 text-sm font-medium">
               Price
             </label>
             <input
-              type="text"
-              id="first_name"
-              class="rounded-lg bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-              placeholder=""
-              required
+              id="price"
+              type="number"
+              {...register('price', { required: true })}
+              className="rounded-lg border w-full px-3 py-2.5"
             />
           </div>
 
           <div>
-            <label
-              for="first_name"
-              class="block mb-2.5 text-sm font-medium text-heading"
-            >
+            <label htmlFor="available" className="block mb-2.5 text-sm font-medium">
               Quantity
             </label>
             <input
-              type="text"
-              id="first_name"
-              class="rounded-lg bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-              placeholder=""
-              required
+              id="available"
+              type="number"
+              {...register('available', { required: true })}
+              className="rounded-lg border w-full px-3 py-2.5"
             />
           </div>
         </div>
-        <button type='submit' className="btn bg-primary text-white">Add Product</button>
-      </div>
+
+        <button type="submit" className="btn bg-primary text-white">
+          Add Product
+        </button>
+      </form>
     </div>
   );
 }
