@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../redux/products/action';
+import { addProduct } from '../redux/products/Action';
 
 const AddProductForm = () => {
     const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const AddProductForm = () => {
         category: "",
         imageUrl: "",
         price: "",
-        available: ""
+        quantity: ""
     })
 
     const onSubmit = (data) => {
@@ -39,12 +39,17 @@ const AddProductForm = () => {
           <label htmlFor="category" className="block mb-2.5 text-sm font-medium">
             Category
           </label>
-          <input
+          <select
             id="category"
-            type="text"
             {...register('category', { required: true })}
-            className="rounded-lg border w-full px-3 py-2.5"
-          />
+            className="rounded-lg border w-full px-3 py-2.5 bg-white"
+          >
+            <option value="">-- เลือกหมวดหมู่ --</option>
+            <option value="food">อาหาร</option>
+            <option value="travel">ท่องเที่ยว</option>
+            <option value="tech">เทคโนโลยี</option>
+            <option value="other">อื่น ๆ</option>
+          </select>
         </div>
 
         <div>
@@ -73,13 +78,13 @@ const AddProductForm = () => {
           </div>
 
           <div>
-            <label htmlFor="available" className="block mb-2.5 text-sm font-medium">
+            <label htmlFor="quantity" className="block mb-2.5 text-sm font-medium">
               Quantity
             </label>
             <input
-              id="available"
+              id="quantity"
               type="number"
-              {...register('available', { required: true })}
+              {...register('quantity', { required: true })}
               className="rounded-lg border w-full px-3 py-2.5"
             />
           </div>
