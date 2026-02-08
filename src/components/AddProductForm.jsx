@@ -18,7 +18,7 @@ const AddProductForm = () => {
         reset();
     }
   return (
-    <div className="bg-white shadow-2xl rounded-2xl p-4">
+    <div className="shadow-2xl rounded-2xl p-4 bg-[#1d232a]">
       <h1 className="text-center text-2xl font-semibold mb-5">
         Add new Product
       </h1>
@@ -42,7 +42,7 @@ const AddProductForm = () => {
           <select
             id="category"
             {...register('category', { required: true })}
-            className="rounded-lg border w-full px-3 py-2.5 bg-white"
+            className="rounded-lg border w-full px-3 py-2.5 bg-[#1d232a]"
           >
             <option value="">-- เลือกหมวดหมู่ --</option>
             <option value="food">อาหาร</option>

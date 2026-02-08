@@ -1,20 +1,30 @@
 import { useDispatch } from "react-redux";
-import { decreaseQuantity } from "../redux/carts/Action";
-import { addQuantity } from "../redux/products/Action";
+import { decreaseQuantity, increaseQuantity, removeFromCart } from "../redux/carts/Action";
+import { addQuantity, removeQuantity } from "../redux/products/Action";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
-  const { id, title, category, quantity, price, imageUrl } = item;
-  const handleRemoveItem = () => {
+  const { id, productId, title, category, quantity, price, imageUrl } = item;
+  const handleDecrease = () => {
     dispatch(decreaseQuantity(id));
-    dispatch(addQuantity(id, quantity));
+    dispatch(addQuantity(productId, 1));
+  };
+
+  const handleIncrease = () => {
+    dispatch(increaseQuantity(id));
+    dispatch(removeQuantity(productId));
+  };
+
+  const handleRemoveItem = () => {
+    dispatch(removeFromCart(id));
+    dispatch(addQuantity(productId, quantity));
   };
   const displayPrice = price ?? 0;
 
   return (
-    <div className="bg-white rounded-xl border p-4 shadow-sm flex gap-4 relative">
-      <div className="w-24 h-24 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border">
+    <div className="bg-[#1d232a] rounded-xl border p-4 shadow-sm flex gap-4 relative">
+      <div className="w-24 h-24 flex-shrink-0 bg-[#1d232a] rounded-lg overflow-hidden border">
         {imageUrl ? (
           <img
             src={imageUrl}
@@ -37,14 +47,14 @@ const CartItem = ({ item }) => {
       </div>
 
       <div className="flex flex-col justify-between items-end min-w-[100px]">
-        <div className="flex items-center bg-gray-50 border border-gray-100 rounded-md overflow-hidden">
-          <button className="px-2 py-1 hover:bg-gray-200 text-gray-400 transition" onClick={handleRemoveItem}>
+        <div className="flex items-center bg-[#23272f] border border-[#1d232a] rounded-md overflow-hidden">
+          <button className="px-2 py-1 hover:bg-[#23272f] text-gray-400 transition" onClick={handleDecrease} disabled={quantity <= 1}>
             -
           </button>
-          <span className="px-3 py-1 text-sm text-gray-600 border-x border-gray-100 bg-white min-w-[30px] text-center">
+          <span className="px-3 py-1 text-sm text-gray-600 border-x border-[#1d232a] bg-[#23272f] min-w-[30px] text-center">
             {quantity}
           </span>
-          <button className="px-2 py-1 hover:bg-gray-200 text-gray-400 transition">
+          <button className="px-2 py-1 hover:bg-[#23272f] text-gray-400 transition" onClick={handleIncrease}>
             +
           </button>
         </div>
@@ -53,7 +63,7 @@ const CartItem = ({ item }) => {
           <p className="text-gray-400 text-sm font-light">
             ${(displayPrice * quantity).toLocaleString()}
           </p>
-          <button className="text-gray-300 hover:text-red-500 transition text-lg">
+          <button className="text-gray-300 hover:text-red-500 transition text-lg" onClick={handleRemoveItem}>
             &times;
           </button>
         </div>

@@ -5,7 +5,7 @@ const CartSummary = ({ items }) => {
   }, 0);
 
   return (
-    <div className="bg-white rounded-xl border p-6 shadow-sm space-y-4">
+    <div className="bg-[#1d232a] rounded-xl border p-6 shadow-sm space-y-4">
       <h2 className="text-lg font-medium">Order Summary</h2>
 
       <div className="flex justify-between text-sm text-gray-600">
@@ -26,8 +26,8 @@ const CartSummary = ({ items }) => {
       </div>
 
       <button
-        className="w-full bg-black text-white py-3 rounded-xl
-                   hover:bg-gray-800 transition"
+        className="w-full bg-[#1d232a] text-white py-3 rounded-xl
+             hover:bg-[#15181c] transition"
       >
         Checkout
       </button>

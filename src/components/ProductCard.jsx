@@ -14,8 +14,8 @@ const ProductCard = (props) => {
   };
 
   return (
-    <div className="card bg-base-100 w-full shadow-md hover:shadow-xl transition">
-      <figure className="h-44 sm:h-48 md:h-52 bg-gray-100">
+    <div className="card bg-[#1d232a] w-full shadow-md hover:shadow-xl transition">
+      <figure className="h-44 sm:h-48 md:h-52 bg-[#1d232a]">
         {imageUrl ? (
           <img
             src={imageUrl}
